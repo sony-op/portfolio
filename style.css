@@ -222,3 +222,29 @@ body::after {
     background-position: 0 100%;
   }
 }
+/* MATRIX BACKGROUND */
+.matrix-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: black;
+}
+
+/* CONTENT ABOVE MATRIX */
+.content {
+  position: relative;
+  z-index: 2;
+  color: #e5e7eb;
+  padding: 80px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* OPTIONAL: glass effect for readability */
+.section-card {
+  background: rgba(2, 6, 23, 0.85);
+  backdrop-filter: blur(6px);
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
