@@ -1,250 +1,34 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
+import { useEffect, useRef } from "react";
 
-body {
-  background: #0b0f19;
-  color: #e5e7eb;
-  line-height: 1.6;
-}
+const MatrixRain = () => {
+  const canvasRef = useRef(null);
 
-/* HERO */
-.hero {
-  text-align: center;
-  padding: 80px 20px;
-  background: linear-gradient(135deg, #020617, #0f172a, #020617);
-}
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
 
-.hero h1 {
-  font-size: 3rem;
-  color: #22d3ee;
-}
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
 
-.hero p {
-  font-size: 1.4rem;
-}
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
 
-.hero span {
-  color: #9ca3af;
-}
+    const chars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%^&*";
+    const fontSize = 16;
+    let columns = Math.floor(canvas.width / fontSize);
+    let drops = Array(columns).fill(1);
 
-/* SECTIONS */
-section {
-  max-width: 900px;
-  margin: auto;
-  padding: 40px 20px;
-}
+    const draw = () => {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-h2 {
-  color: #22d3ee;
-  margin-bottom: 15px;
-}
+      ctx.fillStyle = "#00ff41";
+      ctx.font = `${fontSize}px monospace`;
 
-/* CARDS */
-.card {
-  background: #020617;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-left: 4px solid #22d3ee;
-  border-radius: 6px;
-}
+      for (let i = 0; i < drops.length; i++) {
+        const text = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-/* SKILLS */
-.skills {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 10px;
-}
-
-.skills li {
-  background: #020617;
-  padding: 10px;
-  border-radius: 5px;
-  text-align: center;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #020617;
-  color: #9ca3af;
-}
-
-/* RESPONSIVE */
-@media (max-width: 600px) {
-  .hero h1 {
-    font-size: 2.2rem;
-  }
-}
-
-/* ===== ANIMATIONS ===== */
-
-/* Page load animation */
-.hero {
-  animation: fadeDown 1.2s ease-in-out;
-}
-
-@keyframes fadeDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Section reveal */
-section {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
-}
-
-section.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Card hover animation */
-.card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
-}
-
-/* Skill hover glow */
-.skills li {
-  transition: all 0.3s ease;
-}
-
-.skills li:hover {
-  background: #022c3a;
-  color: #22d3ee;
-  transform: scale(1.05);
-}
-
-.glitch {
-  position: relative;
-  color: #22d3ee;
-}
-
-.glitch::before,
-.glitch::after {
-  content: attr(data-text);
-  position: absolute;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-}
-
-.glitch::before {
-  top: -2px;
-  color: #0ff;
-  animation: glitchTop 2s infinite linear;
-}
-
-.glitch::after {
-  top: 2px;
-  color: #f0f;
-  animation: glitchBottom 1.5s infinite linear;
-}
-
-@keyframes glitchTop {
-  0% { clip-path: inset(0 0 90% 0); }
-  50% { clip-path: inset(0 0 20% 0); }
-  100% { clip-path: inset(0 0 90% 0); }
-}
-
-@keyframes glitchBottom {
-  0% { clip-path: inset(80% 0 0 0); }
-  50% { clip-path: inset(20% 0 0 0); }#matrix {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: black;
-  z-index: -1;
-}
-
-  100% { clip-path: inset(80% 0 0 0); }
-}
-
-.card:hover {
-  animation: glitchCard 0.3s linear;
-}
-
-@keyframes glitchCard {
-  0% { transform: translate(0); }
-  20% { transform: translate(-2px, 2px); }
-  40% { transform: translate(2px, -2px); }
-  60% { transform: translate(-2px, -2px); }
-  100% { transform: translate(0); }
-}
-
-
-/* ===== CYBER SCAN LINES ===== */
-
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 5;
-
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(34, 211, 238, 0.04),
-    rgba(34, 211, 238, 0.04) 1px,
-    transparent 1px,
-    transparent 4px
-  );
-
-  animation: scanMove 8s linear infinite;
-}
-
-
-@keyframes scanMove {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 0 100%;
-  }
-}
-/* MATRIX BACKGROUND */
-.matrix-bg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  background: black;
-}
-
-/* CONTENT ABOVE MATRIX */
-.content {
-  position: relative;
-  z-index: 2;
-  color: #e5e7eb;
-  padding: 80px 20px;
-  max-width: 900px;
-  margin: auto;
-}
-
-/* OPTIONAL: glass effect for readability */
-.section-card {
-  background: rgba(2, 6, 23, 0.85);
-  backdrop-filter: blur(6px);
-  padding: 20px;
-  border-radius: 8px;
-  margin-bottom: 30px;
-}
+        if (drops[i] * fontSize > canvas.height && Ma*
