@@ -132,3 +132,42 @@ section.show {
   color: #22d3ee;
   transform: scale(1.05);
 }
+
+.glitch {
+  position: relative;
+  color: #22d3ee;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.glitch::before {
+  top: -2px;
+  color: #0ff;
+  animation: glitchTop 2s infinite linear;
+}
+
+.glitch::after {
+  top: 2px;
+  color: #f0f;
+  animation: glitchBottom 1.5s infinite linear;
+}
+
+@keyframes glitchTop {
+  0% { clip-path: inset(0 0 90% 0); }
+  50% { clip-path: inset(0 0 20% 0); }
+  100% { clip-path: inset(0 0 90% 0); }
+}
+
+@keyframes glitchBottom {
+  0% { clip-path: inset(80% 0 0 0); }
+  50% { clip-path: inset(20% 0 0 0); }
+  100% { clip-path: inset(80% 0 0 0); }
+}
+
