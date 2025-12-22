@@ -193,3 +193,31 @@ section.show {
 }
 
 
+/* ===== CYBER SCAN LINES ===== */
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(34, 211, 238, 0.04),
+    rgba(34, 211, 238, 0.04) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+
+  animation: scanMove 8s linear infinite;
+}
+
+@keyframes scanMove {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 100%;
+  }
+}
