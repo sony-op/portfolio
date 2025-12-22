@@ -212,7 +212,6 @@ body::after {
 
   animation: scanMove 8s linear infinite;
 }
-animation: scanMove 14s linear infinite;
 
 
 @keyframes scanMove {
