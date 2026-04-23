@@ -4,76 +4,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Professional Portfolio with Motion Graphics Design">
-    <title>Motion Graphics Portfolio - Sony-op</title>
+    <meta name="description" content="Professional Portfolio">
+    <title>My Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
     <script src="script.js" defer></script>
 </head>
 
 <body>
-    <header>
-        <nav class="animated fadeInDown">
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">MyPortfolio</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <section id="home" class="hero-section">
-        <div class="hero-content animated slideInUp">
-            <h1>Welcome to My Portfolio</h1>
-            <p>Creative and Engaging Motion Graphics Design</p>
-            <a href="#projects" class="cta-button">Discover My Work</a>
+    <!-- Home Section -->
+    <section id="home" class="home">
+        <div class="content">
+            <h2>Welcome to My Portfolio</h2>
+            <p>Hi, I am <strong>Sony-op</strong>, a web developer & designer. I specialize in creating clean, modern, and responsive websites.</p>
+            <a href="#projects" class="btn">See My Work</a>
         </div>
     </section>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Hi, I'm <strong>Sony-op</strong>, a professional web developer with a passion for stunning visuals and animation. I specialize in creating modern and user-friendly web applications with creative motion graphics.</p>
-    </section>
-
-    <section id="skills">
-        <h2>Skills</h2>
-        <div class="skill-container">
-            <div class="skill animated grow">HTML & CSS</div>
-            <div class="skill animated grow">JavaScript</div>
-            <div class="skill animated grow">Motion Graphics</div>
-            <div class="skill animated grow">GSAP</div>
-            <div class="skill animated grow">Web Development</div>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>Hello! I am <strong>Sony-op</strong>, a passionate web developer proficient in building websites, optimizing performance, and delivering outstanding user experiences.</p>
         </div>
     </section>
 
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="project-gallery">
-            <div class="project-card">
-                <h3>Interactive Website</h3>
-                <p>A fully interactive website featuring animations and stunning design elements.</p>
-            </div>
-            <div class="project-card">
-                <h3>Motion Graphics App</h3>
-                <p>An application demonstrating creative motion design with GSAP.</p>
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill">HTML</div>
+                <div class="skill">CSS</div>
+                <div class="skill">JavaScript</div>
+                <div class="skill">React</div>
+                <div class="skill">Node.js</div>
+                <div class="skill">Git</div>
             </div>
         </div>
     </section>
 
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <form>
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message" required></textarea>
-            <button type="submit">Send</button>
-        </form>
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>My Projects</h2>
+            <div class="projects-grid">
+                <div class="project">
+                    <h3>Project A</h3>
+                    <p>A responsive e-commerce platform.</p>
+                    <a href="#">View Details</a>
+                </div>
+                <div class="project">
+                    <h3>Project B</h3>
+                    <p>A portfolio website with advanced animations.</p>
+                    <a href="#">View Details</a>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 Sony-op. All Rights Reserved.</p>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <form>
+                <input type="text" placeholder="Name" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Message" rows="5" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            &copy; 2026 MyPortfolio. All rights reserved.
+        </div>
     </footer>
 </body>
 
