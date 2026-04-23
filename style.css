@@ -1,34 +1,51 @@
-import { useEffect, useRef } from "react";
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
 
-const MatrixRain = () => {
-  const canvasRef = useRef(null);
+header {
+    background: #333;
+    color: #fff;
+    padding: 10px 20px;
+}
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
+nav ul {
+    list-style: none;
+    padding: 0;
+}
 
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
 
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
 
-    const chars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%^&*";
-    const fontSize = 16;
-    let columns = Math.floor(canvas.width / fontSize);
-    let drops = Array(columns).fill(1);
+section {
+    padding: 20px;
+    margin: 10px;
+}
 
-    const draw = () => {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+section#about {
+    background: #f4f4f4;
+}
 
-      ctx.fillStyle = "#00ff41";
-      ctx.font = `${fontSize}px monospace`;
+.project {
+    background: #eaeaea;
+    padding: 10px;
+    margin-top: 10px;
+}
 
-      for (let i = 0; i < drops.length; i++) {
-        const text = chars[Math.floor(Math.random() * chars.length)];
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-        if (drops[i] * fontSize > canvas.height && Ma*
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #333;
+    color: #fff;
+    margin-top: 20px;
+}
