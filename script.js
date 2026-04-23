@@ -1,64 +1,23 @@
-const sections = document.querySelectorAll("section");
+document.addEventListener("DOMContentLoaded", () => {
+    // Hero section animation
+    gsap.from(".hero-content h1", { duration: 1, y: -50, opacity: 0 });
+    gsap.from(".hero-content p", { duration: 1, y: -30, opacity: 0, delay: 0.3 });
+    gsap.from(".cta-button", { duration: 1, scale: 0.5, opacity: 0, delay: 0.8 });
 
-const revealSection = () => {
-  const triggerPoint = window.innerHeight / 1.2;
+    // Skill animations
+    const skills = document.querySelectorAll(".skill");
+    skills.forEach((skill, index) => {
+        gsap.from(skill, { duration: 0.5, scale: 0.8, opacity: 0, delay: index * 0.2 });
+    });
 
-  sections.forEach(section => {
-    const sectionTop = section.getBoundingClientRect().top;
-
-    if (sectionTop < triggerPoint) {
-      section.classList.add("show");
-    }
-  });
-};
-
-window.addEventListener("scroll", revealSection);
-window.addEventListener("load", revealSection);
-
-
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-const letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%^&*";
-const fontSize = 16;
-const columns = canvas.width / fontSize;
-
-const drops = [];
-
-// Initial drops
-for (let x = 0; x < columns; x++) {
-  drops[x] = Math.random() * canvas.height;
-}
-
-function drawMatrix() {
-  ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-  ctx.fillStyle = "#00ff41";
-  ctx.font = fontSize + "px monospace";
-
-  for (let i = 0; i < drops.length; i++) {
-    const text = letters.charAt(
-      Math.floor(Math.random() * letters.length)
-    );
-
-    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-      drops[i] = 0;
-    }
-
-    drops[i]++;
-  }
-}
-
-setInterval(drawMatrix, 33);
-
-// Resize handling
-window.addEventListener("resize", () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+    // Project card hover effect
+    const projectCards = document.querySelectorAll(".project-card");
+    projectCards.forEach(card => {
+        card.addEventListener("mouseover", () => {
+            gsap.to(card, { scale: 1.1, duration: 0.3 });
+        });
+        card.addEventListener("mouseout", () => {
+            gsap.to(card, { scale: 1, duration: 0.3 });
+        });
+    });
 });
